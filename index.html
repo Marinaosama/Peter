@@ -3,274 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كل سنة وأنت طيب يا بيتر ❤️</title>
+    <title>بيتر ♥️</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Reem+Kufi:wght@500;700&display=swap');
+
         * {
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
             margin: 0;
             padding: 0;
-            background: radial-gradient(circle at center, #5c0f1d, #2b0308, #120103);
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: radial-gradient(circle at top, #3b040e 0%, #1a0105 55%, #080001 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #fff;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        /* خلفية القلوب والنجوم المتحركة */
+        .bg-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
             overflow: hidden;
+        }
+
+        .floating-item {
+            position: absolute;
+            bottom: -50px;
+            animation: floatUp linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg) scale(0.7); opacity: 0; }
+            20% { opacity: 0.75; }
+            80% { opacity: 0.6; }
+            100% { transform: translateY(-110vh) rotate(360deg) scale(1.3); opacity: 0; }
+        }
+
+        /* الكارت الرئيسي */
+        .card {
+            background: linear-gradient(145deg, rgba(42, 4, 12, 0.92), rgba(18, 1, 5, 0.96));
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 77, 109, 0.35);
+            border-radius: 30px;
+            padding: 32px 24px;
+            width: 92%;
+            max-width: 440px;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 42, 85, 0.2);
+            z-index: 10;
+            animation: cardAppear 0.7s cubic-bezier(0.22, 1, 0.36, 1);
             position: relative;
         }
-        .heart-bg {
-            position: absolute;
-            color: rgba(255, 182, 193, 0.15);
-            animation: floatUp 7s linear infinite;
-            z-index: 1;
-            user-select: none;
-            font-size: 24px;
+
+        @keyframes cardAppear {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
-        @keyframes floatUp {
-            0% { transform: translateY(110vh) scale(0.6) rotate(0deg); opacity: 0; }
-            50% { opacity: 0.7; }
-            100% { transform: translateY(-10vh) scale(1.4) rotate(360deg); opacity: 0; }
-        }
-        .container {
-            background: linear-gradient(145deg, rgba(60, 10, 18, 0.9), rgba(35, 5, 10, 0.95));
-            padding: 35px 25px;
-            border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 75, 110, 0.2);
-            width: 90%;
-            max-width: 420px;
-            text-align: center;
-            z-index: 10;
-            border: 1px solid rgba(255, 182, 193, 0.25);
-            backdrop-filter: blur(10px);
-        }
-        h1 {
-            color: #ffccd5;
+
+        .cake-icon {
+            font-size: 62px;
             margin-bottom: 10px;
-            font-size: 24px;
-            text-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
-            font-weight: 700;
+            display: inline-block;
+            animation: cakeBounce 2.2s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.5));
         }
-        .cake {
-            font-size: 55px;
+
+        @keyframes cakeBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+        }
+
+        .title-italic {
+            font-size: 26px;
+            font-weight: 900;
+            color: #ffccd5;
             margin-bottom: 12px;
-            animation: bounce 2s ease-in-out infinite;
+            font-style: italic;
+            transform: skewX(-6deg);
+            text-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
         }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-        }
-        .sub-text {
-            color: #ffb6c1;
-            font-size: 15px;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-        input {
+
+        input[type="password"] {
             width: 100%;
-            padding: 14px;
-            margin: 10px 0 20px 0;
-            border: 2px solid rgba(255, 105, 180, 0.5);
-            border-radius: 12px;
+            padding: 15px;
+            border-radius: 16px;
+            border: 1.5px solid rgba(255, 117, 143, 0.45);
             background: rgba(255, 255, 255, 0.05);
             color: #fff;
-            font-size: 16px;
+            font-size: 18px;
             text-align: center;
+            margin: 15px 0 20px 0;
             outline: none;
             transition: 0.3s;
+            letter-spacing: 3px;
         }
-        input:focus {
-            border-color: #ff4b6e;
-            box-shadow: 0 0 10px rgba(255, 75, 110, 0.4);
+
+        input[type="password"]:focus {
+            border-color: #ff4d6d;
+            background: rgba(255, 77, 109, 0.1);
+            box-shadow: 0 0 20px rgba(255, 77, 109, 0.35);
         }
-        input::placeholder {
-            color: rgba(255, 182, 193, 0.5);
-        }
-        button {
-            background: linear-gradient(135deg, #ff4b6e, #b31236);
-            color: white;
-            border: none;
-            padding: 14px 25px;
-            border-radius: 12px;
-            font-size: 16px;
-            cursor: pointer;
+
+        .main-btn {
             width: 100%;
-            font-weight: bold;
-            box-shadow: 0 6px 20px rgba(179, 18, 54, 0.5);
+            padding: 15px;
+            border: none;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #e01e37 0%, #800f2f 100%);
+            color: #fff;
+            font-size: 17px;
+            font-weight: 700;
+            font-style: italic;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(224, 30, 55, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .main-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(255, 77, 109, 0.6);
+        }
+
+        .main-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* تنسيق الأسئلة والاختيارات */
+        .q-badge {
+            display: inline-block;
+            background: rgba(255, 77, 109, 0.2);
+            border: 1px solid rgba(255, 143, 163, 0.4);
+            color: #ffb3c1;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            font-style: italic;
+            margin-bottom: 14px;
+        }
+
+        .q-text {
+            font-size: 18px;
+            font-weight: 700;
+            font-style: italic;
+            transform: skewX(-4deg);
+            color: #fff0f3;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 143, 163, 0.3);
+            border-radius: 15px;
+            color: #ffe5ec;
+            font-family: 'Cairo', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            font-style: italic;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-align: center;
+        }
+
+        .option-btn:hover {
+            background: rgba(255, 77, 109, 0.25);
+            border-color: #ff4d6d;
+            transform: translateX(-4px);
+        }
+
+        .feedback-msg {
+            margin-top: 16px;
+            font-size: 15px;
+            font-weight: 700;
+            font-style: italic;
+            min-height: 24px;
             transition: 0.3s;
         }
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 75, 110, 0.7);
+
+        /* تصميم العداد الكريتيف */
+        .creative-counter {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 18px 0 22px 0;
         }
-        .hidden {
-            display: none;
+
+        .counter-box {
+            background: linear-gradient(160deg, rgba(255, 77, 109, 0.18), rgba(89, 13, 34, 0.45));
+            border: 1px solid rgba(255, 117, 143, 0.4);
+            border-radius: 18px;
+            padding: 12px 6px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgba(255, 77, 109, 0.15), 0 8px 20px rgba(0, 0, 0, 0.5);
         }
-        .typing-text {
-            font-size: 18px;
-            color: #ffe4e1;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            border-right: 3px solid #ff4b6e;
-            padding-left: 10px;
-            display: inline-block;
-            text-align: right;
-        }
-        .ticker {
-            position: fixed;
-            bottom: 0;
+
+        .counter-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            background: rgba(30, 4, 8, 0.95);
-            color: #ffb6c1;
-            padding: 12px;
-            font-size: 14px;
-            border-top: 1px solid rgba(255, 105, 180, 0.2);
-            z-index: 100;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff4d6d, transparent);
         }
-        .countdown-box {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin: 20px 0;
-        }
-        .time-card {
-            background: rgba(255, 105, 180, 0.1);
-            padding: 12px 8px;
-            border-radius: 12px;
-            min-width: 65px;
-            border: 1px solid rgba(255, 105, 180, 0.3);
-        }
-        .time-card span {
+
+        .counter-num {
             display: block;
-            font-size: 22px;
-            font-weight: bold;
-            color: #ffccd5;
+            font-size: 21px;
+            font-weight: 900;
+            color: #ffb3c1;
+            text-shadow: 0 0 10px rgba(255, 77, 109, 0.6);
+            font-style: italic;
         }
-        .time-card label {
-            font-size: 11px;
-            color: #f0f0f0;
-        }
-        .question-box {
-            font-size: 17px;
+
+        .counter-label {
+            font-size: 12px;
             color: #ffccd5;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            font-weight: 500;
+            font-weight: 600;
+        }
+
+        /* صندوق الكتابة التدريجية بالخط المائل */
+        .message-container {
+            background: rgba(15, 2, 5, 0.75);
+            border: 1px solid rgba(255, 117, 143, 0.35);
+            border-right: 4px solid #ff4d6d;
+            border-radius: 20px;
+            padding: 20px 18px;
+            text-align: right;
+            max-height: 360px;
+            overflow-y: auto;
+            box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.8);
+            scroll-behavior: smooth;
+        }
+
+        .typed-text {
+            font-size: 16.5px;
+            line-height: 2;
+            color: #fff0f3;
+            font-style: italic;
+            transform: skewX(-4deg);
+            white-space: pre-line;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 18px;
+            background-color: #ff4d6d;
+            margin-right: 4px;
+            animation: blink 0.7s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* تخصيص شريط التمرير */
+        .message-container::-webkit-scrollbar {
+            width: 5px;
+        }
+        .message-container::-webkit-scrollbar-thumb {
+            background: #ff4d6d;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
 
-    <div class="heart-bg" style="left: 8%; animation-duration: 6s;">❤️</div>
-    <div class="heart-bg" style="left: 22%; animation-duration: 8s;">💖</div>
-    <div class="heart-bg" style="left: 40%; animation-duration: 5s;">💗</div>
-    <div class="heart-bg" style="left: 65%; animation-duration: 7s;">❤️</div>
-    <div class="heart-bg" style="left: 85%; animation-duration: 9s;">💕</div>
+    <div class="bg-elements" id="bgElements"></div>
 
-    <!-- خطوة الباسورد -->
-    <div class="container" id="step1">
-        <div class="cake">🎂</div>
-        <h1>كل سنة وأنت طيب يحبيبي 🌚</h1>
-        <p class="sub-text">اكتب باسورد احلي واحد جه الدنيا دي 🫂</p>
-        <input type="password" id="passInput" placeholder="اكتب الباسورد هنا...">
-        <button onclick="checkPassword()">دخول</button>
-        <p id="errorMsg" style="color: #ff6b81; margin-top: 12px; display: none; font-size: 14px;">حاول تاني يا حبيبي ❤️</p>
+    <!-- المرحلة الأولى: الباسورد -->
+    <div class="card" id="passScreen">
+        <div class="cake-icon">🎂</div>
+        <h1 class="title-italic">بيتر ♥️</h1>
+        <input type="password" id="passInput" placeholder="•••••••" inputmode="numeric">
+        <button class="main-btn" onclick="checkPass()">دخول ♥️</button>
+        <p class="feedback-msg" id="passFeedback" style="color: #ff758f;"></p>
     </div>
 
-    <!-- خطوة الأسئلة -->
-    <div class="container hidden" id="step2">
-        <div class="cake">✨</div>
-        <h2 style="color: #ffccd5; margin-bottom: 15px; font-size: 22px;">جاوب يحييبي 🌚</h2>
-        <p class="question-box" id="questionText"></p>
-        <input type="text" id="answerInput" placeholder="اكتب إجابتك هنا...">
-        <button onclick="checkAnswer()">تأكيد الإجابة</button>
+    <!-- المرحلة الثانية: الأسئلة -->
+    <div class="card hidden" id="quizScreen">
+        <div class="cake-icon" id="qIcon">🔮</div>
+        <div><span class="q-badge" id="qTitle"></span></div>
+        <p class="q-text" id="qText"></p>
+        <div class="options-list" id="optionsContainer"></div>
+        <p class="feedback-msg" id="quizFeedback"></p>
     </div>
 
-    <!-- خطوة المفاجأة والكتابة المتسلسلة والعداد -->
-    <div class="container hidden" id="step3">
-        <div class="cake">🎉</div>
-        <div class="typing-text" id="finalMessage"></div>
-        <div class="countdown-box">
-            <div class="time-card"><span id="days">0</span><label>يوم</label></div>
-            <div class="time-card"><span id="hours">0</span><label>ساعة</label></div>
-            <div class="time-card"><span id="minutes">0</span><label>دقيقة</label></div>
-            <div class="time-card"><span id="seconds">0</span><label>ثانية</label></div>
+    <!-- المرحلة الثالثة: العداد والكلام -->
+    <div class="card hidden" id="finalScreen" style="max-width: 480px;">
+        <div class="cake-icon">🎂</div>
+        <h1 class="title-italic">بيتر ♥️</h1>
+        
+        <div class="creative-counter">
+            <div class="counter-box"><span class="counter-num" id="years">0</span><span class="counter-label">سنة</span></div>
+            <div class="counter-box"><span class="counter-num" id="months">0</span><span class="counter-label">شهر</span></div>
+            <div class="counter-box"><span class="counter-num" id="days">0</span><span class="counter-label">يوم</span></div>
+            <div class="counter-box"><span class="counter-num" id="hours">0</span><span class="counter-label">ساعة</span></div>
+            <div class="counter-box"><span class="counter-num" id="minutes">0</span><span class="counter-label">دقيقة</span></div>
+            <div class="counter-box"><span class="counter-num" id="seconds">0</span><span class="counter-label">ثانية</span></div>
         </div>
-        <p style="color: #ffb6c1; margin-top: 15px; font-size: 14px; font-weight: 500;">عقبال العمر كله سوا يا رب ❤️</p>
-    </div>
 
-    <div class="ticker">
-        <marquee behavior="scroll" direction="right">✨ شوف المفاجاه يحبيبي 🌚 من أجمل صدف حياتي ربنا يخليك ليا يا أحلى بيتر في الدنيا دي كلها ❤️✨</marquee>
+        <div class="message-container" id="msgScrollBox">
+            <span class="typed-text" id="typedOutput"></span><span class="cursor"></span>
+        </div>
     </div>
 
     <script>
-        const correctPassword = "3122005"; 
+        // عناصر الخلفية المتحركة (قلوب ونجوم)
+        const bgContainer = document.getElementById('bgElements');
+        const symbols = ['♥️', '✨', '💖', '🎂', '💫', '❤️'];
+        for (let i = 0; i < 25; i++) {
+            const el = document.createElement('div');
+            el.className = 'floating-item';
+            el.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.fontSize = (Math.random() * 16 + 14) + 'px';
+            el.style.animationDuration = (Math.random() * 6 + 6) + 's';
+            el.style.animationDelay = (Math.random() * 6) + 's';
+            bgContainer.appendChild(el);
+        }
 
-        function checkPassword() {
-            const val = document.getElementById('passInput').value.trim();
-            if(val === correctPassword) {
-                document.getElementById('step1').classList.add('hidden');
-                document.getElementById('step2').classList.remove('hidden');
-                loadQuestion();
+        // التحقق من الباسورد
+        function checkPass() {
+            const input = document.getElementById('passInput').value.trim();
+            const feedback = document.getElementById('passFeedback');
+            if (input === "3122005") {
+                document.getElementById('passScreen').classList.add('hidden');
+                document.getElementById('quizScreen').classList.remove('hidden');
+                renderQuestion();
             } else {
-                document.getElementById('errorMsg').style.display = 'block';
+                feedback.innerText = "كلمة السر غلط ❌";
             }
         }
 
-        const questions = [
-            { q: "جاوب صح يحبيبي عشان تشوف المفاجاه 😍<br><br>(اكتر أكله بحبها من إيديك؟)", a: "أي حاجة" },
-            { q: "جاوب صح يحبيبي عشان تشوف المفاجاه 😍<br><br>(تاريخ اليوم اللي بدأنا فيه حكايتنا؟)", a: "15/5" },
-            { q: "جاوب صح يحبيبي عشان تشوف المفاجاه 😍<br><br>(مين أكثر شخص بيحبك في الدنيا دي؟)", a: "مارينا" }
-        ];
-        let currentQ = 0;
-
-        function loadQuestion() {
-            if(currentQ < questions.length) {
-                document.getElementById('questionText').innerHTML = questions[currentQ].q;
-            } else {
-                document.getElementById('step2').classList.add('hidden');
-                document.getElementById('step3').classList.remove('hidden');
-                startTyping();
-                startCountdown();
-            }
-        }
-
-        function checkAnswer() {
-            const ans = document.getElementById('answerInput').value.trim();
-            if(ans !== "") {
-                document.getElementById('answerInput').value = "";
-                currentQ++;
-                loadQuestion();
-            } else {
-                alert("اكتب الإجابة يا حبيبي الأول 🤍");
-            }
-        }
-
-        const messageText = "كل سنة وأنت منور حياتي يا أجمل سند وأحن قلب في الدنيا، ربنا يديمك ليا وتفضل دايمًا ناجح ومكسر الدنيا يا بيتر ❤️✨";
-        let i = 0;
-        function startTyping() {
-            if (i < messageText.length) {
-                document.getElementById('finalMessage').innerHTML += messageText.charAt(i);
-                i++;
-                setTimeout(startTyping, 65);
-            }
-        }
-
-        function startCountdown() {
-            const startDate = new Date("2026-05-15T00:00:00").getTime();
-            setInterval(() => {
-                const now = new Date().getTime();
-                const diff = now - startDate;
-                if(diff > 0) {
-                    document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    document.getElementById('seconds').innerText = Math.floor((diff % (1000 * 60)) / 1000);
-                }
-            }, 1000);
-        }
-    </script>
-</body>
-</html>
+        // بيانات الأسئلة بالظبط زي ما طلبتي
+        const quizData = [
+            {
+                icon: "🔮",
+                title: 'سؤال "الوضع في المستقبل" 🔮',
+                question: '"تفتكر بعد 10 سنين واحنا قاعدين سوا بنشرب قهوة، هنكون بنتحاسب على إمين؟"',
+                options: [
+                    { text: "مين نسى مفتاح البيت عالباب", isCorrect: true, reply: "إجابة صح 🔑" },
+                    
