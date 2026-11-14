@@ -12,97 +12,111 @@
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #4a0e17, #80132b, #2b060c);
+            background: radial-gradient(circle at center, #5c0f1d, #2b0308, #120103);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #fff;
-            overflow-x: hidden;
+            overflow: hidden;
             position: relative;
         }
-        /* خلفية قلوب متحركة */
+        /* خلفية قلوب رومانسية منسقة */
         .heart-bg {
             position: absolute;
-            color: rgba(255, 105, 180, 0.2);
-            animation: floatUp 6s linear infinite;
+            color: rgba(255, 182, 193, 0.15);
+            animation: floatUp 7s linear infinite;
             z-index: 1;
             user-select: none;
+            font-size: 24px;
         }
         @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-            50% { opacity: 0.8; }
-            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+            0% { transform: translateY(110vh) scale(0.6) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.7; }
+            100% { transform: translateY(-10vh) scale(1.4) rotate(360deg); opacity: 0; }
         }
         .container {
-            background: rgba(45, 8, 14, 0.85);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            background: linear-gradient(145deg, rgba(60, 10, 18, 0.9), rgba(35, 5, 10, 0.95));
+            padding: 35px 25px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 75, 110, 0.2);
             width: 90%;
-            max-width: 450px;
+            max-width: 420px;
             text-align: center;
             z-index: 10;
-            border: 2px solid rgba(255, 182, 193, 0.3);
-            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 182, 193, 0.25);
+            backdrop-filter: blur(10px);
         }
         h1 {
-            color: #ffb6c1;
-            margin-bottom: 20px;
-            font-size: 26px;
-            text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+            color: #ffccd5;
+            margin-bottom: 10px;
+            font-size: 24px;
+            text-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
+            font-weight: 700;
         }
         .cake {
-            font-size: 50px;
-            margin-bottom: 10px;
-            animation: bounce 1.5s infinite;
+            font-size: 55px;
+            margin-bottom: 12px;
+            animation: bounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 192, 203, 0.4));
         }
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-12px); }
+        }
+        .sub-text {
+            color: #ffb6c1;
+            font-size: 15px;
+            margin-bottom: 20px;
+            font-weight: 500;
         }
         input {
             width: 100%;
-            padding: 12px;
-            margin: 15px 0;
-            border: 2px solid #ff69b4;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
+            padding: 14px;
+            margin: 10px 0 20px 0;
+            border: 2px solid rgba(255, 105, 180, 0.5);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
             color: #fff;
             font-size: 16px;
             text-align: center;
             outline: none;
+            transition: 0.3s;
+        }
+        input:focus {
+            border-color: #ff4b6e;
+            box-shadow: 0 0 10px rgba(255, 75, 110, 0.4);
         }
         input::placeholder {
-            color: #ffb6c1;
+            color: rgba(255, 182, 193, 0.5);
         }
         button {
-            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            background: linear-gradient(135deg, #ff4b6e, #b31236);
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 10px;
+            padding: 14px 25px;
+            border-radius: 12px;
             font-size: 16px;
             cursor: pointer;
             width: 100%;
             font-weight: bold;
-            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
+            box-shadow: 0 6px 20px rgba(179, 18, 54, 0.5);
             transition: 0.3s;
         }
         button:hover {
-            opacity: 0.9;
-            transform: scale(1.02);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 75, 110, 0.7);
         }
         .hidden {
             display: none;
         }
         .typing-text {
-            font-size: 20px;
+            font-size: 18px;
             color: #ffe4e1;
-            line-height: 1.6;
+            line-height: 1.8;
             margin-bottom: 20px;
-            border-left: 3px solid #ff69b4;
-            padding-right: 10px;
+            border-right: 3px solid #ff4b6e;
+            padding-left: 10px;
             display: inline-block;
             text-align: right;
         }
@@ -110,64 +124,76 @@
             position: fixed;
             bottom: 0;
             width: 100%;
-            background: rgba(45, 8, 14, 0.9);
+            background: rgba(30, 4, 8, 0.95);
             color: #ffb6c1;
-            padding: 10px;
+            padding: 12px;
             font-size: 14px;
-            border-top: 1px solid rgba(255, 105, 180, 0.3);
+            border-top: 1px solid rgba(255, 105, 180, 0.2);
             z-index: 100;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.5);
         }
         .countdown-box {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             margin: 20px 0;
         }
         .time-card {
-            background: rgba(255, 105, 180, 0.15);
-            padding: 10px;
-            border-radius: 10px;
-            min-width: 60px;
-            border: 1px solid rgba(255, 105, 180, 0.4);
+            background: rgba(255, 105, 180, 0.1);
+            padding: 12px 8px;
+            border-radius: 12px;
+            min-width: 65px;
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            box-shadow: inset 0 0 10px rgba(255, 105, 180, 0.1);
         }
         .time-card span {
             display: block;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
-            color: #ffb6c1;
+            color: #ffccd5;
         }
         .time-card label {
-            font-size: 12px;
-            color: #ddd;
+            font-size: 11px;
+            color: #f0f0f0;
+        }
+        .question-box {
+            font-size: 17px;
+            color: #ffccd5;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
 
-    <!-- قلوب متحركة في الخلفية -->
-    <div class="heart-bg" style="left: 10%; animation-duration: 5s;">❤️</div>
-    <div class="heart-bg" style="left: 30%; animation-duration: 7s;">💖</div>
-    <div class="heart-bg" style="left: 50%; animation-duration: 4s;">❤️</div>
-    <div class="heart-bg" style="left: 70%; animation-duration: 6s;">💗</div>
-    <div class="heart-bg" style="left: 90%; animation-duration: 8s;">❤️</div>
+    <!-- قلوب متحركة للخلفية الفخمة -->
+    <div class="heart-bg" style="left: 8%; animation-duration: 6s;">❤️</div>
+    <div class="heart-bg" style="left: 22%; animation-duration: 8s;">💖</div>
+    <div class="heart-bg" style="left: 40%; animation-duration: 5s;">💗</div>
+    <div class="heart-bg" style="left: 65%; animation-duration: 7s;">❤️</div>
+    <div class="heart-bg" style="left: 85%; animation-duration: 9s;">💕</div>
 
+    <!-- الخطوة الأولى: كلمة السر -->
     <div class="container" id="step1">
         <div class="cake">🎂</div>
         <h1>كل سنة وأنت طيب يحبيبي 🌚</h1>
-        <p style="color: #ffb6c1; margin-bottom: 15px;">اكتب باسورد احلي واحد جه الدنيا دي 🫂</p>
+        <p class="sub-text">اكتب باسورد احلي واحد جه الدنيا دي 🫂</p>
         <input type="password" id="passInput" placeholder="اكتب الباسورد هنا...">
         <button onclick="checkPassword()">دخول</button>
-        <p id="errorMsg" style="color: #ff4b2b; margin-top: 10px; display: none;">حاول تاني يا حبيبي ❤️</p>
+        <p id="errorMsg" style="color: #ff6b81; margin-top: 12px; display: none; font-size: 14px;">حاول تاني يا حبيبي ❤️</p>
     </div>
 
+    <!-- الخطوة الثانية: الأسئلة -->
     <div class="container hidden" id="step2">
         <div class="cake">✨</div>
-        <h2 style="color: #ffb6c1; margin-bottom: 15px;">جاوب يحييبي 🌚</h2>
-        <p id="questionText" style="font-size: 18px; margin-bottom: 15px;"></p>
+        <h2 style="color: #ffccd5; margin-bottom: 15px; font-size: 22px;">جاوب يحييبي 🌚</h2>
+        <p class="question-box" id="questionText"></p>
         <input type="text" id="answerInput" placeholder="اكتب إجابتك هنا...">
         <button onclick="checkAnswer()">تأكيد الإجابة</button>
     </div>
 
+    <!-- الخطوة الثالثة: المفاجأة والعداد -->
     <div class="container hidden" id="step3">
         <div class="cake">🎉</div>
         <div class="typing-text" id="finalMessage"></div>
@@ -177,19 +203,19 @@
             <div class="time-card"><span id="minutes">0</span><label>دقيقة</label></div>
             <div class="time-card"><span id="seconds">0</span><label>ثانية</label></div>
         </div>
-        <p style="color: #ffb6c1; margin-top: 15px; font-size: 15px;">عقبال العمر كله سوا يا رب ❤️</p>
+        <p style="color: #ffb6c1; margin-top: 15px; font-size: 14px; font-weight: 500;">عقبال العمر كله سوا يا رب ❤️</p>
     </div>
 
+    <!-- الشريط المتحرك بالأسفل -->
     <div class="ticker">
-        <marquee behavior="scroll" direction="right">✨ شوف المفاجاه يحبيبي 🌚 من أجمل صدف حياتي ربنا يخليك ليا يا أحلى بيتر في الدنيا ❤️✨</marquee>
+        <marquee behavior="scroll" direction="right">✨ شوف المفاجاه يحبيبي 🌚 من أجمل صدف حياتي ربنا يخليك ليا يا أحلى بيتر في الدنيا دي كلها ❤️✨</marquee>
     </div>
 
     <script>
-        // حط هنا الباسورد اللي تحبيه (مثلاً تاريخ ميلاده أو اسمك بالانجليزي)
-        const correctPassword = "123"; 
+        const correctPassword = "3122005"; 
 
         function checkPassword() {
-            const val = document.getElementById('passInput').value;
+            const val = document.getElementById('passInput').value.trim();
             if(val === correctPassword) {
                 document.getElementById('step1').classList.add('hidden');
                 document.getElementById('step2').classList.remove('hidden');
@@ -200,15 +226,15 @@
         }
 
         const questions = [
-            { q: "جاوب صح يحبيبي عشان تشوف المفاجاه 😍\n(اكتر أكله بحبها من إيديك؟)", a: "أي حاجة" },
-            { q: "جاوب صح يحبيبي عشان تشوف المفاجاه 😍\n(تاريخ اليوم اللي بدأنا فيه حكايتنا؟)", a: "15/5" },
-            { q: "جاوب صح يحبيبي عشان تشوف المفاجاه 😍\n(مين أكثر شخص بيحبك في الدنيا دي؟)", a: "مارينا" }
+            { q: "جاوب صح يحبيبي عشان تشوف المفاجاه 😍<br><br>(اكتر أكله بحبها من إيديك؟)", a: "أي حاجة" },
+            { q: "جاوب صح يحبيبي عشان تشوف المفاجاه 😍<br><br>(تاريخ اليوم اللي بدأنا فيه حكايتنا؟)", a: "15/5" },
+            { q: "جاوب صح يحبيبي عشان تشوف المفاجاه 😍<br><br>(مين أكثر شخص بيحبك في الدنيا دي؟)", a: "مارينا" }
         ];
         let currentQ = 0;
 
         function loadQuestion() {
             if(currentQ < questions.length) {
-                document.getElementById('questionText').innerText = questions[currentQ].q;
+                document.getElementById('questionText').innerHTML = questions[currentQ].q;
             } else {
                 document.getElementById('step2').classList.add('hidden');
                 document.getElementById('step3').classList.remove('hidden');
@@ -234,12 +260,11 @@
             if (i < messageText.length) {
                 document.getElementById('finalMessage').innerHTML += messageText.charAt(i);
                 i++;
-                setTimeout(startTyping, 70);
+                setTimeout(startTyping, 65);
             }
         }
 
         function startCountdown() {
-            // تاريخ بداية العلاقة (مثلاً 15 مايو 2026) أو تاريخ عيد ميلاده
             const startDate = new Date("2026-05-15T00:00:00").getTime();
             setInterval(() => {
                 const now = new Date().getTime();
