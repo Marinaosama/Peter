@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كل سنة وأنت طيب يا بيتر ❤️</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            text-align: center;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.96);
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            max-width: 480px;
+            width: 90%;
+            margin: 20px auto;
+        }
+        h1 { color: #e91e63; margin-bottom: 5px; font-size: 32px; }
+        h2 { color: #d81b60; font-size: 24px; }
+        p { font-size: 15px; line-height: 1.7; }
+        
+        /* شاشة كلمة السر */
+        #login-screen input {
+            padding: 12px;
+            width: 80%;
+            border: 2px solid #ff80ab;
+            border-radius: 10px;
+            outline: none;
+            text-align: center;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        .btn {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover { background-color: #c2185b; }
+        #error-msg { color: #d32f2f; margin-top: 10px; display: none; font-size: 14px; font-weight: bold; }
+
+        /* الأقسام المخفية */
+        .hidden { display: none; }
+
+        /* الأسئلة والتفاعل */
+        .question-box {
+            background: #fff0f5;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ffc0cb;
+            text-align: right;
+        }
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            background: white;
+            border: 1.5px solid #ff80ab;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: right;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        .option-btn:hover { background: #ffe4e1; }
+        .feedback { font-size: 13px; margin-top: 5px; font-weight: bold; }
+
+        /* العداد */
+        .timer {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .time-box {
+            background: #fff0f5;
+            padding: 10px;
+            border-radius: 10px;
+            width: 22%;
+            border: 1px solid #ffc0cb;
+        }
+        .time-box span {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            color: #d81b60;
+        }
+        .time-box label { font-size: 12px; color: #666; }
+
+        /* رسالة التهنئة الطويلة */
+        .message-box {
+            background: #fff5f8;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px dashed #ff80ab;
+            margin: 15px 0;
+            text-align: right;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        audio { margin-top: 15px; width: 100%; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. شاشة صندوق الباسورد (الباسورد: 3122005) -->
+    <div id="login-screen" class="card">
+        <h2>🎁 صندوق مفاجأة بيتر</h2>
+        <p>اكتب الباسورد السري عشان تفتح الهدية ❤️</p>
+        <input type="password" id="password" placeholder="كلمة السر...">
+        <br>
+        <button class="btn" onclick="checkPassword()">فتح الصندوق ✨</button>
+        <div id="error-msg">الباسورد مش صح يا بيتر! حاول تاني 🥺</div>
+    </div>
+
+    <!-- 2. شاشة المسابقة الكريتيف -->
+    <div id="quiz-screen" class="card hidden">
+        <h2>🧠 اختبر ذكائك يا بطل</h2>
+        <p style="font-size: 14px; color: #666;">لازم تجاوب صح عشان توصل للمفاجأة الكبرى!</p>
+        
+        <!-- السؤال الأول -->
+        <div class="question-box">
+            <p><b>1. تفتكر بعد 10 سنين واحنا قاعدين سوا بنشرب قهوة، هنكون بنتحاسب على إيه؟</b></p>
+            <button class="option-btn" onclick="answer(1, 'correct')">مين نسى مفتاح البيت عالباب 🔑</button>
+            <button class="option-btn" onclick="answer(1, 'correct')">مين اللي أكل آخر حتة شيكولاتة في الثلاجة 😂</button>
+            <button class="option-btn" onclick="answer(1, 'wrong')">على مين الدور يعمل الشاي ❤️</button>
+            <div id="f1" class="feedback"></div>
+        </div>
+
+        <!-- السؤال الثاني -->
+        <div class="question-box">
+            <p><b>2. لما ببص لك كده من غير ما أنطق بكلمة، بكون بفكر في إيه غالباً؟</b></p>
+            <button class="option-btn" onclick="answer(2, 'wrong')">يارب يسكت شوية هههه ❌</button>
+            <button class="option-btn" onclick="answer(2, 'correct')">يا بختي بيه والله ❤️ ✨</button>
+            <button class="option-btn" onclick="answer(2, 'wrong')">بكون بخطط لمصيبة جديدة 😈</button>
+            <div id="f2" class="feedback"></div>
+        </div>
+
+        <!-- السؤال الثالث -->
+        <div class="question-box">
+            <p><b>3. لو الدنيا كلها اتلخبطت وسابت بعضها، إيه أكتر حاجة بتخلّي يومك يتظبط ويرجع مكانه؟</b></p>
+            <button class="option-btn" onclick="answer(3, 'correct')">ضحكة منك أو مسج في وسط اليوم 🥰</button>
+            <button class="option-btn" onclick="answer(3, 'wrong')">الأكل طبعاً</button>
+            <button class="option-btn" onclick="answer(3, 'wrong')">النوم العميق</button>
+            <div id="f3" class="feedback"></div>
+        </div>
+
+        <button id="next-btn" class="btn hidden" onclick="showCelebration()">شوف المفاجأة الكبرى 🎉</button>
+    </div>
+
+    <!-- 3. شاشة التهنئة النهائية والعداد ورسالتك -->
+    <div id="celebration-screen" class="card hidden">
+        <h1>بيتر ♥️</h1>
+        
+        <!-- العداد من تاريخ ميلاده: 3 ديسمبر 2005 -->
+        <p style="margin: 5px 0; font-size: 14px; color: #666;">عمرك منور الدنيا بقاله:</p>
+        <div class="timer">
+            <div class="time-box"><span id="days">0</span><label>يوم</label></div>
+            <div class="time-box"><span id="hours">0</span><label>ساعة</label></div>
+            <div class="time-box"><span id="minutes">0</span><label>دقيقة</label></div>
+            <div class="time-box"><span id="seconds">0</span><label>ثانية</label></div>
+        </div>
+
+        <!-- رسالتك الطويلة والدافية -->
+        <div class="message-box">
+            <p style="white-space: pre-line; margin: 0; font-size: 14px; color: #444;">كل سنة وإنت حبيبي وأجمل حاجة حصلتلي ❤️🎂🥹 النهارده مش يوم عادي خالص بالنسبالي، ده أول عيد ميلاد ليك وإحنا مع بعض، وأول مرة أكون جنبك في يوم زي ده، وده لوحده مخليني فرحانة بشكل مش قادره أصفه 🥹❤️ كل سنة وإنت معايا وقريب مني، وكل سنة وإنت الشخص اللي بيفرح قلبي وبيخليني أحس إن الدنيا لسه فيها حاجات حلوة 🫂❤️ نفسي السنة الجديدة من عمرك تكون كلها فرحة ونجاح وراحة بال، وربنا يحققلك كل اللي نفسك فيه ويبعد عنك أي حاجة تضايقك أو تكسر خاطرك 🤲🏻❤️ وأتمنى أفضل موجودة في كل أعياد ميلادك الجاية، وأفضل أول واحدة تقولك كل سنة وإنت طيب يا حبيبي، وأشوفك كل سنة بتكبر قدامي وأنا لسه بحبك أكتر من السنة اللي قبلها 🥹❤️ أنا يمكن معرفش أوصفلك قد إيه وجودك بقى مهم عندي، بس عايزاك تعرف إنك غالي على قلبي أوي، وإن أول عيد ميلاد لينا سوا ده هيفضل ذكرى حلوة عندي مهما عدّى وقت ❤️🥹 ربنا يخليك ليا وما يحرمنيش منك ولا من ضحكتك ولا من وجودك في حياتي، ويجمعنا دايمًا على خير وحب وفرحة ❤️🫂 كل سنة وإنت حبيبي، وكل سنة وإنت أقرب حد لقلبي، وكل سنة وإنت أحلى واحد في حياتي ❤️🎂🥹 بحبك أوي أوي، وأتمنى يكون ده أول عيد ميلاد من أعياد ميلاد كتير نحتفل بيها سوا ❤️‍🩹🎉 كل سنة وإنت بخير يا حبيبي، وعقبال مليون سنة وإنت معايا وفي قلبي ❤️🥹🫂
+
+بحبك بطريقه متتوصفش بجد 🌚♥️♥️♥️ 
+اول عيد ميلاد ليك واحنا سوا ومش اخر عيد ميلاد وزي النهارده نكون بنحتفل باحلي عيد ميلاد في الدنيا في بيتنا يحبيبي وعقبال كل سنه واحنا مع بعض يحبيبي 🌚🫂♥️♥️♥️♥️</p>
+        </div>
+
+        <!-- الأغنية -->
+        <div>
+            <p style="font-size: 13px; margin: 5px 0;">أغنيتنا المفضلة 🎵</p>
+            <audio id="bg-music" loop controls>
+                <source src="song.mp3" type="audio/mpeg">
+                متصفحك لا يدعم تشغيل الصوت.
+            </audio>
+        </div>
+    </div>
+
+    <script>
+        // الباسورد المطلوب
+        const correctPassword = "3122005"; 
+
+        // تاريخ ميلاد بيتر لحساب العداد (3 ديسمبر 2005)
+        const birthDate = new Date(2005, 11, 3, 0, 0, 0); 
+
+        function checkPassword() {
+            const inputPass = document.getElementById("password").value;
+            if (inputPass === correctPassword) {
+                document.getElementById("login-screen").classList.add("hidden");
+                document.getElementById("quiz-screen").classList.remove("hidden");
+            } else {
+                document.getElementById("error-msg").style.display = "block";
+            }
+        }
+
+        let answeredCorrectly = {1: false, 2: false, 3: false};
+
+        function answer(qNum, status) {
+            const feedbackEl = document.getElementById("f" + qNum);
+            if (status === 'correct') {
+                feedbackEl.style.color = "green";
+                feedbackEl.innerText = "إجابة صحيحة ورايقة يا بطل! ✨";
+                answeredCorrectly[qNum] = true;
+            } else {
+                feedbackEl.style.color = "red";
+                feedbackEl.innerText = "غلط يا بيتر، فكر تاني 😂";
+            }
+
+            if (answeredCorrectly[1] && answeredCorrectly[2] && answeredCorrectly[3]) {
+                document.getElementById("next-btn").classList.remove("hidden");
+            }
+        }
+
+        function showCelebration() {
+            document.getElementById("quiz-screen").classList.add("hidden");
+            document.getElementById("celebration-screen").classList.remove("hidden");
+            
+            const music = document.getElementById("bg-music");
+            music.play().catch(() => {});
+        }
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = now - birthDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / 1000 / 60) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById("days").innerText = days >= 0 ? days : 0;
+            document.getElementById("hours").innerText = hours >= 0 ? hours : 0;
+            document.getElementById("minutes").innerText = minutes >= 0 ? minutes : 0;
+            document.getElementById("seconds").innerText = seconds >= 0 ? seconds : 0;
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+</html>
