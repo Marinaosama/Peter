@@ -101,7 +101,7 @@
             margin: 15px 0 20px 0;
             outline: none;
             transition: 0.3s;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
 
         input[type="text"]:focus {
@@ -201,4 +201,268 @@
             border-radius: 18px;
             padding: 12px 6px;
             position: relative;
-            box-shadow: inset 0 0 15px rgba(255, 77, 109, 0.15), 0 8px 20px rgba(0,
+            box-shadow: inset 0 0 15px rgba(255, 77, 109, 0.15), 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .counter-num {
+            display: block;
+            font-size: 21px;
+            font-weight: 900;
+            color: #ffb3c1;
+            font-style: italic;
+        }
+
+        .counter-label {
+            font-size: 12px;
+            color: #ffccd5;
+            font-weight: 600;
+        }
+
+        .message-container {
+            background: rgba(15, 2, 5, 0.75);
+            border: 1px solid rgba(255, 117, 143, 0.35);
+            border-right: 4px solid #ff4d6d;
+            border-radius: 20px;
+            padding: 20px 18px;
+            text-align: right;
+            max-height: 360px;
+            overflow-y: auto;
+        }
+
+        .typed-text {
+            font-size: 16.5px;
+            line-height: 2;
+            color: #fff0f3;
+            font-style: italic;
+            white-space: pre-line;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 18px;
+            background-color: #ff4d6d;
+            margin-right: 4px;
+            animation: blink 0.7s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .message-container::-webkit-scrollbar {
+            width: 5px;
+        }
+        .message-container::-webkit-scrollbar-thumb {
+            background: #ff4d6d;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-elements" id="bgElements"></div>
+
+    <!-- المرحلة الأولى: الباسورد -->
+    <div class="card" id="passScreen">
+        <div class="cake-icon">🎂</div>
+        <h1 class="title-italic">بيتر ♥️</h1>
+        <input type="text" id="passInput" placeholder="اكتب الباسورد هنا (3122005)..." autocomplete="off">
+        <button class="main-btn" onclick="checkPass()">دخول ♥️</button>
+        <p class="feedback-msg" id="passFeedback" style="color: #ff758f;"></p>
+    </div>
+
+    <!-- المرحلة الثانية: الأسئلة -->
+    <div class="card hidden" id="quizScreen">
+        <div class="cake-icon" id="qIcon">🔮</div>
+        <div><span class="q-badge" id="qTitle"></span></div>
+        <p class="q-text" id="qText"></p>
+        <div class="options-list" id="optionsContainer"></div>
+        <p class="feedback-msg" id="quizFeedback"></p>
+    </div>
+
+    <!-- المرحلة الثالثة: العداد والكلام -->
+    <div class="card hidden" id="finalScreen" style="max-width: 480px;">
+        <div class="cake-icon">🎂</div>
+        <h1 class="title-italic">بيتر ♥️</h1>
+        
+        <div class="creative-counter">
+            <div class="counter-box"><span class="counter-num" id="years">0</span><span class="counter-label">سنة</span></div>
+            <div class="counter-box"><span class="counter-num" id="months">0</span><span class="counter-label">شهر</span></div>
+            <div class="counter-box"><span class="counter-num" id="days">0</span><span class="counter-label">يوم</span></div>
+            <div class="counter-box"><span class="counter-num" id="hours">0</span><span class="counter-label">ساعة</span></div>
+            <div class="counter-box"><span class="counter-num" id="minutes">0</span><span class="counter-label">دقيقة</span></div>
+            <div class="counter-box"><span class="counter-num" id="seconds">0</span><span class="counter-label">ثانية</span></div>
+        </div>
+
+        <div class="message-container" id="msgScrollBox">
+            <span class="typed-text" id="typedOutput"></span><span class="cursor"></span>
+        </div>
+    </div>
+
+    <script>
+        const bgContainer = document.getElementById('bgElements');
+        const symbols = ['♥️', '✨', '💖', '🎂', '💫', '❤️'];
+        for (let i = 0; i < 25; i++) {
+            const el = document.createElement('div');
+            el.className = 'floating-item';
+            el.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.fontSize = (Math.random() * 16 + 14) + 'px';
+            el.style.animationDuration = (Math.random() * 6 + 6) + 's';
+            el.style.animationDelay = (Math.random() * 6) + 's';
+            bgContainer.appendChild(el);
+        }
+
+        function checkPass() {
+            const input = document.getElementById('passInput').value.trim();
+            const feedback = document.getElementById('passFeedback');
+            if (input === "3122005") {
+                document.getElementById('passScreen').classList.add('hidden');
+                document.getElementById('quizScreen').classList.remove('hidden');
+                renderQuestion();
+            } else {
+                feedback.innerText = "كلمة السر غلط ❌ (اكتب 3122005)";
+            }
+        }
+
+        const quizData = [
+            {
+                icon: "🔮",
+                title: 'سؤال "الوضع في المستقبل" 🔮',
+                question: '"تفتكر بعد 10 سنين واحنا قاعدين سوا بنشرب قهوة، هنكون بنتحاسب على إمين؟"',
+                options: [
+                    { text: "مين نسى مفتاح البيت عالباب", isCorrect: true, reply: "إجابة صح 🔑" },
+                    { text: "مين اللي أكل آخر حتة شيكولاتة في الثلاجة", isCorrect: true, reply: "إجابة صح برضه 😂" },
+                    { text: "على مين الدور يعمل الشاي ❤️", isCorrect: false, reply: "جرب اختيار تاني ❤️" }
+                ]
+            },
+            {
+                icon: "👀",
+                title: 'سؤال "لغة العيون" 👀',
+                question: '"لما ببص لك كده من غير ما أنطق بكلمة، بكون بفكر في إيه غالباً؟"',
+                options: [
+                    { text: "يارب يسكت شوية هههه", isCorrect: false, reply: "ايه القسوة دي! راجع نفسك 😂" },
+                    { text: "يا بختي بيه والله ❤️", isCorrect: true, reply: "إجابة صح ✨" },
+                    { text: "بكون بخطط لمصيبة جديدة 😈", isCorrect: false, reply: "لأ، فكر تاني 😈" }
+                ]
+            },
+            {
+                icon: "🧭",
+                title: 'سؤال "البوصلة" 🧭',
+                question: '"لو الدنيا كلها اتلخبطت وسابت بعضها، إيه أكتر حاجة بتخلّي يومك يتظبط ويرجع مكانه؟"',
+                options: [
+                    { text: "ضحكة منك أو مسج في وسط اليوم", isCorrect: true, reply: "إجابة صح وحلوة أوي 🥰" },
+                    { text: "الأكل طبعاً", isCorrect: false, reply: "ركز شوية 😂" },
+                    { text: "النوم العميق", isCorrect: false, reply: "حاول تاني 😴" }
+                ]
+            }
+        ];
+
+        let currentStep = 0;
+        let isTransitioning = false;
+
+        function renderQuestion() {
+            isTransitioning = false;
+            const q = quizData[currentStep];
+            document.getElementById('qIcon').innerText = q.icon;
+            document.getElementById('qTitle').innerText = q.title;
+            document.getElementById('qText').innerText = q.question;
+            document.getElementById('quizFeedback').innerText = "";
+
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = "";
+
+            q.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt.text;
+                btn.onclick = () => handleOption(opt);
+                container.appendChild(btn);
+            });
+        }
+
+        function handleOption(opt) {
+            if (isTransitioning) return;
+            const feedback = document.getElementById('quizFeedback');
+
+            if (opt.isCorrect) {
+                isTransitioning = true;
+                feedback.style.color = "#80ed99";
+                feedback.innerText = opt.reply;
+                setTimeout(() => {
+                    currentStep++;
+                    if (currentStep < quizData.length) {
+                        renderQuestion();
+                    } else {
+                        document.getElementById('quizScreen').classList.add('hidden');
+                        document.getElementById('finalScreen').classList.remove('hidden');
+                        startBirthCounter();
+                        startTypeWriter();
+                    }
+                }, 1300);
+            } else {
+                feedback.style.color = "#ff758f";
+                feedback.innerText = opt.reply;
+            }
+        }
+
+        function startBirthCounter() {
+            const birthDate = new Date(2005, 11, 3, 0, 0, 0);
+
+            function update() {
+                const now = new Date();
+                let years = now.getFullYear() - birthDate.getFullYear();
+                let months = now.getMonth() - birthDate.getMonth();
+                let days = now.getDate() - birthDate.getDate();
+                let hours = now.getHours() - birthDate.getHours();
+                let minutes = now.getMinutes() - birthDate.getMinutes();
+                let seconds = now.getSeconds() - birthDate.getSeconds();
+
+                if (seconds < 0) { seconds += 60; minutes--; }
+                if (minutes < 0) { minutes += 60; hours--; }
+                if (hours < 0) { hours += 24; days--; }
+                if (days < 0) {
+                    const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                    days += prevMonth.getDate();
+                    months--;
+                }
+                if (months < 0) { months += 12; years--; }
+
+                document.getElementById('years').innerText = years;
+                document.getElementById('months').innerText = months;
+                document.getElementById('days').innerText = days;
+                document.getElementById('hours').innerText = hours;
+                document.getElementById('minutes').innerText = minutes;
+                document.getElementById('seconds').innerText = seconds;
+            }
+
+            update();
+            setInterval(update, 1000);
+        }
+
+        const fullMessage = `كل سنة وإنت حبيبي وأجمل حاجة حصلتلي ❤️🎂🥹 النهارده مش يوم عادي خالص بالنسبالي، ده أول عيد ميلاد ليك وإحنا مع بعض، وأول مرة أكون جنبك في يوم زي ده، وده لوحده مخليني فرحانة بشكل مش قادره أوصفه 🥹❤️ كل سنة وإنت معايا وقريب مني، وكل سنة وإنت الشخص اللي بيفرح قلبي وبيخليني أحس إن الدنيا لسه فيها حاجات حلوة 🫂❤️ نفسي السنة الجديدة من عمرك تكون كلها فرحة ونجاح وراحة بال، وربنا يحققلك كل اللي نفسك فيه ويبعد عنك أي حاجة تضايقك أو تكسر خاطرك 🤲🏻❤️ وأتمنى أفضل موجودة في كل أعياد ميلادك الجاية، وأفضل أول واحدة تقولك كل سنة وإنت طيب يا حبيبي، وأشوفك كل سنة بتكبر قدامي وأنا لسه بحبك أكتر من السنة اللي قبلها 🥹❤️ أنا يمكن معرفش أوصفلك قد إيه وجودك بقى مهم عندي، بس عايزاك تعرف إنك غالي على قلبي أوي، وإن أول عيد ميلاد لينا سوا ده هيفضل ذكرى حلوة عندي مهما عدّى وقت ❤️🥹 ربنا يخليك ليا وما يحرمنيش منك ولا من ضحكتك ولا من وجودك في حياتي، ويجمعنا دايمًا على خير وحب وفرحة ❤️🫂 كل سنة وإنت حبيبي، وكل سنة وإنت أقرب حد لقلبي، وكل سنة وإنت أحلى واحد في حياتي ❤️🎂🥹 بحبك أوي أوي، وأتمنى يكون ده أول عيد ميلاد من أعياد ميلاد كتير نحتفل بيها سوا ❤️‍🩹🎉 كل سنة وإنت بخير يا حبيبي، وعقبال مليون سنة وإنت معايا وفي قلبي ❤️🥹🫂
+بحبك بطريقه متتوصفش بجد 🌚♥️♥️♥️ 
+اول عيد ميلاد ليك واحنا سوا ومش اخر عيد ميلاد وزي النهارده نكون بنحتفل باحلي عيد ميلاد في الدنيا في بيتنا يحبيبي وعقبال كل سنه واحنا مع بعض يحبيبي 🌚🫂♥️♥️♥️♥️`;
+
+        let idx = 0;
+        const outputEl = document.getElementById('typedOutput');
+        const scrollBox = document.getElementById('msgScrollBox');
+
+        function startTypeWriter() {
+            if (idx < fullMessage.length) {
+                outputEl.textContent += fullMessage.charAt(idx);
+                idx++;
+                scrollBox.scrollTop = scrollBox.scrollHeight;
+                setTimeout(startTypeWriter, 45);
+            }
+        }
+    </script>
+</body>
+</html>
