@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بيتر ♥️</title>
+    <title>احلي واحد جه الدنيا دي 🫂 ♥️</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
 
@@ -37,20 +37,6 @@
             overflow: hidden;
         }
 
-        .floating-item {
-            position: absolute;
-            bottom: -50px;
-            animation: floatUp linear infinite;
-            opacity: 0;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg) scale(0.7); opacity: 0; }
-            20% { opacity: 0.75; }
-            80% { opacity: 0.6; }
-            100% { transform: translateY(-110vh) rotate(360deg) scale(1.3); opacity: 0; }
-        }
-
         .card {
             background: linear-gradient(145deg, rgba(42, 4, 12, 0.92), rgba(18, 1, 5, 0.96));
             backdrop-filter: blur(18px);
@@ -80,7 +66,7 @@
         }
 
         .title-italic {
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 900;
             color: #ffccd5;
             margin-bottom: 12px;
@@ -89,7 +75,7 @@
             text-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
         }
 
-        input[type="text"] {
+        input[type="password"] {
             width: 100%;
             padding: 15px;
             border-radius: 16px;
@@ -104,7 +90,7 @@
             letter-spacing: 2px;
         }
 
-        input[type="text"]:focus {
+        input[type="password"]:focus {
             border-color: #ff4d6d;
             background: rgba(255, 77, 109, 0.1);
             box-shadow: 0 0 20px rgba(255, 77, 109, 0.35);
@@ -188,63 +174,65 @@
             min-height: 24px;
         }
 
-        /* العداد المتحرك */
+        /* العداد المنظم والمتحرك (4 أعمدة) */
         .creative-counter {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
             margin: 18px 0 22px 0;
         }
 
         .counter-box {
-            background: linear-gradient(160deg, rgba(255, 77, 109, 0.18), rgba(89, 13, 34, 0.45));
-            border: 1px solid rgba(255, 117, 143, 0.4);
-            border-radius: 18px;
-            padding: 12px 6px;
+            background: linear-gradient(160deg, rgba(255, 77, 109, 0.22), rgba(89, 13, 34, 0.55));
+            border: 1px solid rgba(255, 117, 143, 0.45);
+            border-radius: 20px;
+            padding: 14px 10px;
             position: relative;
-            box-shadow: inset 0 0 15px rgba(255, 77, 109, 0.15), 0 8px 20px rgba(0, 0, 0, 0.5);
-            animation: counterPulse 2s ease-in-out infinite;
+            box-shadow: inset 0 0 20px rgba(255, 77, 109, 0.2), 0 10px 25px rgba(0, 0, 0, 0.6);
+            animation: counterPulse 2.5s ease-in-out infinite;
         }
 
         @keyframes counterPulse {
             0%, 100% { transform: scale(1); border-color: rgba(255, 117, 143, 0.4); }
-            50% { transform: scale(1.03); border-color: rgba(255, 77, 109, 0.8); box-shadow: 0 0 20px rgba(255, 77, 109, 0.35); }
+            50% { transform: scale(1.02); border-color: rgba(255, 77, 109, 0.85); box-shadow: 0 0 25px rgba(255, 77, 109, 0.4); }
         }
 
         .counter-num {
             display: block;
-            font-size: 21px;
+            font-size: 24px;
             font-weight: 900;
             color: #ffb3c1;
             font-style: italic;
+            text-shadow: 0 0 10px rgba(255, 179, 193, 0.6);
         }
 
         .counter-label {
-            font-size: 12px;
+            font-size: 13px;
             color: #ffccd5;
             font-weight: 600;
+            margin-top: 3px;
         }
 
-        /* صندوق الكلام النهائي (وضوح فائق وخلفية مريحة) */
+        /* صندوق الكلام النهائي */
         .message-container {
-            background: rgba(12, 2, 4, 0.92);
-            border: 1.5px solid rgba(255, 117, 143, 0.5);
+            background: rgba(12, 2, 4, 0.95);
+            border: 1.5px solid rgba(255, 117, 143, 0.6);
             border-right: 5px solid #ff4d6d;
-            border-radius: 20px;
-            padding: 22px 18px;
+            border-radius: 22px;
+            padding: 24px 20px;
             text-align: right;
-            max-height: 360px;
+            max-height: 380px;
             overflow-y: auto;
-            box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.9), 0 10px 30px rgba(0, 0, 0, 0.6);
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.95), 0 12px 35px rgba(0, 0, 0, 0.7);
         }
 
         .typed-text {
             font-size: 17.5px;
             font-weight: 600;
-            line-height: 2.2;
+            line-height: 2.3;
             color: #ffffff;
             font-style: italic;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
             white-space: pre-line;
         }
 
@@ -256,7 +244,7 @@
             margin-right: 4px;
             animation: blink 0.7s infinite;
             vertical-align: middle;
-            box-shadow: 0 0 8px #ff4d6d;
+            box-shadow: 0 0 10px #ff4d6d;
         }
 
         @keyframes blink {
@@ -284,30 +272,102 @@
     <!-- المرحلة الأولى: الباسورد -->
     <div class="card" id="passScreen">
         <div class="cake-icon">🎂</div>
-        <h1 class="title-italic">بيتر ♥️</h1>
-        <input type="text" id="passInput" placeholder="اكتب الباسورد هنا (3122005)..." autocomplete="off">
+        <h1 class="title-italic">احلي واحد جه الدنيا دي 🫂 ♥️</h1>
+        <input type="password" id="passInput" placeholder="تاريخ احلي واحد جه الدنيا دي 🫂" autocomplete="off">
         <button class="main-btn" onclick="checkPass()">دخول ♥️</button>
         <p class="feedback-msg" id="passFeedback" style="color: #ff758f;"></p>
     </div>
 
-    <!-- المرحلة الثانية: الأسئلة -->
+    <!-- المرحلة الثانية: الأسئلة (السؤال الأول بدون كلمة أمين) -->
     <div class="card hidden" id="quizScreen">
         <div class="cake-icon" id="qIcon">🔮</div>
-        <div><span class="q-badge" id="qTitle"></span></div>
-        <p class="q-text" id="qText"></p>
-        <div class="options-list" id="optionsContainer"></div>
+        <div><span class="q-badge" id="qTitle">السؤال الأول</span></div>
+        <p class="q-text" id="qText">تفتكر أول مرة تقابلنا فيها حسيت بإيه؟</p>
+        <div class="options-list" id="optionsContainer">
+            <button class="option-btn" onclick="nextQuestion(1)">إني لقيت الشخص المناسب 😌</button>
+            <button class="option-btn" onclick="nextQuestion(2)">كنت مستغرب بس ارتحت بسرعة ✨</button>
+            <button class="option-btn" onclick="nextQuestion(3)">حسيت إننا نعرف بعض من زمان 🥰</button>
+        </div>
         <p class="feedback-msg" id="quizFeedback"></p>
     </div>
 
-    <!-- المرحلة الثالثة: العداد والكلام -->
+    <!-- المرحلة الثالثة: العداد والكلام والتورتة -->
     <div class="card hidden" id="finalScreen" style="max-width: 480px;">
         <div class="cake-icon">🎂</div>
-        <h1 class="title-italic">بيتر ♥️</h1>
+        <h1 class="title-italic">احلي واحد جه الدنيا دي 🫂 ♥️</h1>
         
+        <!-- العداد المنظم والمتحرك -->
         <div class="creative-counter">
-            <div class="counter-box"><span class="counter-num" id="years">0</span><span class="counter-label">سنة</span></div>
-            <div class="counter-box"><span class="counter-num" id="months">0</span><span class="counter-label">شهر</span></div>
-            <div class="counter-box"><span class="counter-num" id="days">0</span><span class="counter-label">يوم</span></div>
+            <div class="counter-box"><span class="counter-num" id="days">0</span><span class="counter-label">يوم حب</span></div>
             <div class="counter-box"><span class="counter-num" id="hours">0</span><span class="counter-label">ساعة</span></div>
             <div class="counter-box"><span class="counter-num" id="minutes">0</span><span class="counter-label">دقيقة</span></div>
-            <div class="counter-box"><span class="counter-num" id="seconds">0</span><span
+            <div class="counter-box"><span class="counter-num" id="seconds">0</span><span class="counter-label">ثانية</span></div>
+        </div>
+
+        <!-- صندوق الكلام النهائي اللي بيتكتب ببطء وبشكل هادي -->
+        <div class="message-container">
+            <div class="typed-text" id="typedText"></div><span class="cursor"></span>
+        </div>
+    </div>
+
+    <script>
+        function checkPass() {
+            const pass = document.getElementById('passInput').value;
+            // الباسورد المطلوب (تاريخ عيد الميلاد)
+            if(pass === "3122005") {
+                document.getElementById('passScreen').classList.add('hidden');
+                document.getElementById('quizScreen').classList.remove('hidden');
+            } else {
+                document.getElementById('passFeedback').innerText = "الباسورد غلط يا حب! جرب تاني 🥺";
+            }
+        }
+
+        function nextQuestion(optionNum) {
+            // الانتقال للشاشة النهائية بعد الإجابة
+            document.getElementById('quizScreen').classList.add('hidden');
+            document.getElementById('finalScreen').classList.remove('hidden');
+            startCounter();
+            startTyping();
+        }
+
+        // دالة العداد
+        function startCounter() {
+            const startDate = new Date('2026-05-15T00:00:00'); // تاريخ البداية
+            setInterval(() => {
+                const now = new Date();
+                const diff = now - startDate;
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / 1000 / 60) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
+
+                document.getElementById('days').innerText = days;
+                document.getElementById('hours').innerText = hours;
+                document.getElementById('minutes').innerText = minutes;
+                document.getElementById('seconds').innerText = seconds;
+            }, 1000);
+        }
+
+        // دالة كتابة الكلام ببطء وراحة (Typewriter)
+        const finalMessage = `كل سنة وأنت أحلى وأغلى حاجة حصلت في حياتي كلها يا أحلى واحد جه الدنيا دي 🫂♥️.
+ربنا يديمك ليا السند والحب والضحكة اللي بتنور أيامي.
+وجودك جنبي بيغير الدنيا للأحسن، بحبك قد الدنيا دي كلها! الأيام جنبك أحلى بكتير ✨`;
+
+        function startTyping() {
+            let i = 0;
+            const speed = 75; // سرعة هادية ومريحة للقراءة
+            const textElement = document.getElementById('typedText');
+            
+            function typeWriter() {
+                if (i < finalMessage.length) {
+                    textElement.innerHTML += finalMessage.charAt(i) === '\n' ? '<br>' : finalMessage.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, speed);
+                }
+            }
+            typeWriter();
+        }
+    </script>
+</body>
+</html>
